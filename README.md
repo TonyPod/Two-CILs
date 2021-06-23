@@ -1,9 +1,9 @@
 # Two-CILs
 
-This is the official repository for the CVPR 2021 Continual Learning workshop paper: "_A Tale of Two CILs: The Connections
-between Class Incremental Learning and Class Imbalanced Learning, and Beyond_"
-[[Paper]](https://drive.google.com/file/d/1jHQMswZ6YENuFduX_OoLsytieUTZ-xxb/view?usp=sharing)
-[[Supp]](https://drive.google.com/file/d/1PL3lBOIsKmPco3CjmInzz0BLAPB6F_ng/view?usp=sharing)
+This is the official repository for the CVPR 2021 Continual Learning workshop paper: "_A Tale of Two CILs: The
+Connections between Class Incremental Learning and Class Imbalanced Learning, and Beyond_"
+[[Paper]](https://openaccess.thecvf.com/content/CVPR2021W/CLVision/papers/He_A_Tale_of_Two_CILs_The_Connections_Between_Class_Incremental_CVPRW_2021_paper.pdf)
+[[Supp]](https://openaccess.thecvf.com/content/CVPR2021W/CLVision/supplemental/He_A_Tale_of_CVPRW_2021_supplemental.pdf)
 
 You can perform the following three steps to run our codes!
 
@@ -47,11 +47,15 @@ according to https://patrykchrabaszcz.github.io/Imagenet32/.
 
 ## 3. Usage
 
-After downloading the datasets and changing the `data_path`, simply run the following scripts for **CIFAR-100** and **Group ImageNet** respectively (some configurations in the script should be set in advance, e.g. ``LD_LIBRARY_PATH``):
+After downloading the datasets and changing the `data_path`, simply run the following scripts for **CIFAR-100** and
+**Group ImageNet** respectively (some configurations in the script should be set in advance, e.g. ``LD_LIBRARY_PATH``):
 
 `bash scripts/cifar100.sh`
 
 `bash scripts/imagenet64x64.sh`
+
+By default, the scripts above use LeNet on CIFAR-100 and ResNet-18 on Group ImageNet. You can change
+the ``COMMON_FLAGS`` if you want to try other settings.
 
 After running all experiments above, you can run the following scripts to show the top-1 accuracy and running time of
 all methods:
@@ -60,7 +64,11 @@ all methods:
 
 `bash scripts/show_imagenet64x64.sh`
 
-To obtain the violin graphs and the polar charts, simply go to the result folders of _post-scaling_ and _MDFCIL_, which are in ``result/cifar100_random_1/base_10_inc_10_total_100/seed_1993/skip_first_resnet_70_adam_0.005_aug_wd_0.0001_random_20_total_lwf_1.0_temp_2.0_post_scaling`` and ``result/imagenet64x64_10x10_random_1/base_10_inc_10_total_100/seed_1993/skip_first_resnet18_70_adam_0.005_aug_wd_0.0001_random_20_total_lwf_1.0_temp_2.0_adj_w_weight_aligning_no_bias`` respectively.
+To obtain the violin graphs and the polar charts, simply go to the result folders of _post-scaling_ and _MDFCIL_, which
+are
+in ``result/cifar100_random_1/base_10_inc_10_total_100/seed_1993/skip_first_resnet_70_adam_0.005_aug_wd_0.0001_random_20_total_lwf_1.0_temp_2.0_post_scaling``
+and ``result/imagenet64x64_10x10_random_1/base_10_inc_10_total_100/seed_1993/skip_first_resnet18_70_adam_0.005_aug_wd_0.0001_random_20_total_lwf_1.0_temp_2.0_adj_w_weight_aligning_no_bias``
+respectively.
 
 [//]: <> (To obtain the violin graphs and the polar charts, p)
 
@@ -80,11 +88,15 @@ If you use these codes, please cite our paper:
 
 ## Note
 
-You can regard this repository as a Tensorflow library for Class Incremental Learning methods, a counterpart for [Avalanche](https://avalanche.continualai.org/) or [Sequoia](https://github.com/lebrice/Sequoia) implemented by PyTorch. A more comprehensive version can be found in [TF2-CIL](https://github.com/TonyPod/TF2-CIL).
+You can regard this repository as a Tensorflow library for Class Incremental Learning methods, a counterpart
+for [Avalanche](https://avalanche.continualai.org/) or [Sequoia](https://github.com/lebrice/Sequoia) implemented by
+PyTorch. A more comprehensive version can be found in [TF2-CIL](https://github.com/TonyPod/TF2-CIL).
 
-However, the main purpose of this work is to compare the anti-biasing techniques in recent Class Incremental Learning methods. Thus, unfair techniques such as cutmix, intense data augmentation are removed. 
+However, the main purpose of this work is to compare the anti-biasing techniques in recent Class Incremental Learning
+methods. Thus, unfair techniques such as cutmix, intense data augmentation are removed.
 
-If your goal is to fully reproduce results listed in other papers, then this repository might not be the optimal solution.
+If your goal is to fully reproduce results listed in other papers, then this repository might not be the optimal
+solution.
 
 ## Further
 

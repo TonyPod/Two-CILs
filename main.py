@@ -48,7 +48,7 @@ if __name__ == '__main__':
 
     # 1. baseline
     parser.add_argument('--network', type=str, default='resnet18',
-                        help='lenet and resnet for CIFAR-100; resnet18 and mobilenet for Group ImageNet')
+                        help='we currently support lenet and resnet for CIFAR-100; resnet18 and mobilenet for Group ImageNet')
     parser.add_argument('--epochs', type=int, default=70, help='number of epochs for training')
     parser.add_argument('--optimizer', type=str, default='adam', help='[adam|sgd]')
     parser.add_argument('--baseline', type=str, default='fc', help='the final layer')
