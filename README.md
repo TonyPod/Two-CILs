@@ -47,6 +47,8 @@ according to https://patrykchrabaszcz.github.io/Imagenet32/.
 
 ## 3. Usage
 
+### 3.1 Training
+
 After downloading the datasets and changing the `data_path`, simply run the following scripts for **CIFAR-100** and
 **Group ImageNet** respectively (some configurations in the script should be set in advance, e.g. ``LD_LIBRARY_PATH``):
 
@@ -57,6 +59,12 @@ After downloading the datasets and changing the `data_path`, simply run the foll
 By default, the scripts above use LeNet on CIFAR-100 and ResNet-18 on Group ImageNet. You can change
 the ``COMMON_FLAGS`` if you want to try other settings.
 
+Also, by default it will run 5 different class orders on CIFAR-100 and 3 different class orders on Group ImageNet, and
+it may take too much time to finish training. For acceleration, you can simply change the ``for i in {1..5}``
+to ``for i in {1..1}`` to reduce the number of class orders.
+
+### 3.2. Comparison
+
 After running all experiments above, you can run the following scripts to show the top-1 accuracy and running time of
 all methods:
 
@@ -64,8 +72,14 @@ all methods:
 
 `bash scripts/show_imagenet64x64.sh`
 
-To obtain the violin graphs and the polar charts, simply go to the result folders of _post-scaling_ and _MDFCIL_, which
-are
+Note that if you reduce the number of class orders, the value of ``num_orders`` in those two scripts should also be
+changed. For instance, if you use ``for i in {1..1}`` in **3.1 Training**, the value of ``num_orders`` should be set 
+to 1.
+
+### 3.3. Visualization
+
+To obtain the _violin graphs_ and the _polar charts_, simply go to the result folders of _post-scaling_ and _MDFCIL_,
+which are
 in ``result/cifar100_random_1/base_10_inc_10_total_100/seed_1993/skip_first_resnet_70_adam_0.005_aug_wd_0.0001_random_20_total_lwf_1.0_temp_2.0_post_scaling``
 and ``result/imagenet64x64_10x10_random_1/base_10_inc_10_total_100/seed_1993/skip_first_resnet18_70_adam_0.005_aug_wd_0.0001_random_20_total_lwf_1.0_temp_2.0_adj_w_weight_aligning_no_bias``
 respectively.
